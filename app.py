@@ -9,11 +9,12 @@ async def post_person(request: Request):
     person = await request.json()
     data.append(person)
 
-    #check = all(data)
+    check = True
 
-    #check_list = list(data.values())
-    for value in data.keys():
-        check = bool(data[value])
+    list = person.values()
+    for value in list:
+        if value == '':
+            check = False
     
     if check == False:
         result = {"error_message": "invalid request"}
