@@ -5,15 +5,15 @@ app = FastAPI()
 data = []
 
 @app.post("/person")
-async def post_person(request: Request):
+async def post_person(request: Request):   
     person = await request.json()
     data.append(person)
 
-    check = all(data)
-    
-    # for info in person:
-    #     if len(info["name"]) == 0:
-    #         check == False
+    #check = all(data)
+
+    #check_list = list(data.values())
+    for value in data.keys():
+        check = bool(data[value])
     
     if check == False:
         result = {"error_message": "invalid request"}
